@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../core/services/localization_service.dart';
 import '../../../core/services/nav.dart';
 import '../../../core/services/size_config.dart';
 
@@ -9,6 +10,25 @@ class TermsCondition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final benefits = [
+      (
+        title: context.l10n!.benefitCoursesTitle,
+        description: context.l10n!.benefitCoursesDesc,
+      ),
+      (
+        title: context.l10n!.benefitMockTestsTitle,
+        description: context.l10n!.benefitMockTestsDesc,
+      ),
+      (
+        title: context.l10n!.benefitFlashcardsTitle,
+        description: context.l10n!.benefitFlashcardsDesc,
+      ),
+      (
+        title: context.l10n!.benefitTutorChatTitle,
+        description: context.l10n!.benefitTutorChatDesc,
+      ),
+    ];
+
     return Container(
       height: SizeConfig.screenHeight * 0.85,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
@@ -26,7 +46,7 @@ class TermsCondition extends StatelessWidget {
             ),
             const Gap(16),
             Text(
-              'প্রিমিয়ামে আপগ্রেড করুন?',
+              context.l10n!.upgradeToPremiumTitle,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
@@ -35,7 +55,7 @@ class TermsCondition extends StatelessWidget {
             const Gap(12),
             Text(
               textAlign: TextAlign.center,
-              '"টু ডু অ্যাপ" এটি একটি উপকারী মোবাইল অ্যাপ্লিকেশন, যা ব্যবহারকারীদের বিভিন্ন কাজে সাহায্য করে। এই এপ্লিকেশনের মাধ্যমে ব্যবহারকারীরা তাদের কাজ, পরিকল্পনা।',
+              context.l10n!.premiumIntroDescription,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const Gap(16),
@@ -48,7 +68,7 @@ class TermsCondition extends StatelessWidget {
                 ),
                 const Gap(4),
                 Text(
-                  '"টু ডু অ্যাপ" এটি একটি উপকারী মোবাইল অ্যাপ্লিকেশন',
+                  context.l10n!.premiumTagline,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
@@ -56,43 +76,44 @@ class TermsCondition extends StatelessWidget {
             ),
             const Gap(32),
             Text(
-              'আপনি কেনো আপগ্রেড করবেন?',
+              context.l10n!.whyUpgradeTitle,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
                   .copyWith(fontWeight: FontWeight.bold),
             ),
             const Gap(16),
-            for (int i = 0; i < 4; i++)
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/sub_star.png",
-                    height: 40,
-                    width: 40,
-                  ),
-                  const Gap(14),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'বর্তমান সব কোর্স অ্যাক্সেস',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(fontWeight: FontWeight.bold),
+            for (final benefit in benefits)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/sub_star.png",
+                      height: 40,
+                      width: 40,
+                    ),
+                    const Gap(14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            benefit.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          const Gap(8),
+                          Text(benefit.description,
+                              style: Theme.of(context).textTheme.bodyMedium),
+                        ],
                       ),
-                      const Gap(8),
-                      SizedBox(
-                        width: SizeConfig.screenWidth * 0.8,
-                        child: Text(
-                            'বর্তমান সব কোর্স ও কন্টেন্টের অ্যাক্সেস বর্তমান সব কোর্স অ্যাক্সেস ',
-                            style: Theme.of(context).textTheme.bodyMedium),
-                      ),
-                    ],
-                  )
-                ],
+                    ),
+                  ],
+                ),
               ),
           ],
         ),

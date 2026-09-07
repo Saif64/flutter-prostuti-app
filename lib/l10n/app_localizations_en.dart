@@ -358,6 +358,63 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premium => 'Premium';
 
   @override
+  String get premiumPlanTitle => 'Premium Plan';
+
+  @override
+  String get standardPlanTitle => 'Standard Plan';
+
+  @override
+  String get basicPlanTitle => 'Basic Plan';
+
+  @override
+  String get forOneYear => 'for 1 year';
+
+  @override
+  String get forSixMonths => 'for 6 months';
+
+  @override
+  String get forOneMonth => 'for 1 month';
+
+  @override
+  String get alreadyActiveSubscription => 'You already have an active subscription';
+
+  @override
+  String get upgradeToPremiumTitle => 'Upgrade to Premium?';
+
+  @override
+  String get premiumIntroDescription => 'Prostuti Premium gives you unlimited access to all courses, mock tests, flashcards, and direct conversations with tutors, so you can prepare with everything you need in one place.';
+
+  @override
+  String get premiumTagline => 'Everything you need to prepare, in one subscription';
+
+  @override
+  String get whyUpgradeTitle => 'Why should you upgrade?';
+
+  @override
+  String get benefitCoursesTitle => 'Access to all courses';
+
+  @override
+  String get benefitCoursesDesc => 'Unlock every current and upcoming course, along with all of its lessons and materials.';
+
+  @override
+  String get benefitMockTestsTitle => 'Unlimited mock tests';
+
+  @override
+  String get benefitMockTestsDesc => 'Practice with unlimited mock tests, quizzes, and segment tests to track your progress.';
+
+  @override
+  String get benefitFlashcardsTitle => 'Flashcards for quick revision';
+
+  @override
+  String get benefitFlashcardsDesc => 'Revise faster with flashcards covering every subject and topic.';
+
+  @override
+  String get benefitTutorChatTitle => 'Direct chat with tutors';
+
+  @override
+  String get benefitTutorChatDesc => 'Get your doubts cleared by chatting directly with tutors whenever you need help.';
+
+  @override
   String get price => 'Price';
 
   @override

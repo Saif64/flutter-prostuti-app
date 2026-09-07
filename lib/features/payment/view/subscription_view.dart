@@ -29,24 +29,32 @@ class SubscriptionView extends ConsumerWidget with CommonWidgets {
     final List<Map<String, dynamic>> plans = [
       {
         'plan': 'Premium',
+        'planTitle': context.l10n!.premiumPlanTitle,
         'price': '${500 * 12}',
         'duration': '1 year',
+        'durationText': context.l10n!.forOneYear,
         'priceValue': 500 * 12
       },
       {
         'plan': 'Standard',
+        'planTitle': context.l10n!.standardPlanTitle,
         'price': '${500 * 6}',
         'duration': '6 months',
+        'durationText': context.l10n!.forSixMonths,
         'priceValue': 500 * 6
       },
       {
         'plan': 'Basic',
+        'planTitle': context.l10n!.basicPlanTitle,
         'price': '${500}',
         'duration': '1 month',
+        'durationText': context.l10n!.forOneMonth,
         'priceValue': 500
       },
     ];
 
+    final alreadyActiveSubscriptionMsg =
+        context.l10n!.alreadyActiveSubscription;
     final selectedIndex = ref.watch(selectedIndexNotifierProvider);
     final subscriptionAsyncValue = ref.watch(userSubscribedProvider);
     final _debouncer = Debouncer(milliseconds: 120);
@@ -95,9 +103,9 @@ class SubscriptionView extends ConsumerWidget with CommonWidgets {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           child: SubscriptionCard(
-                            plan: plan['plan']!,
+                            planTitle: plan['planTitle']!,
                             price: "৳ ${plan['price']}",
-                            duration: plan['duration']!,
+                            durationText: plan['durationText']!,
                             isSelected: index == selectedIndex,
                           ),
                         ),
@@ -119,22 +127,12 @@ class SubscriptionView extends ConsumerWidget with CommonWidgets {
                 children: [
                   isLoading
                       ? const Center(child: CircularProgressIndicator())
-                      : // Updated payment button section for subscription_view.dart
-
-                      // Updated payment button section for subscription_view.dart
-
-// Replace the ElevatedButton in your subscription view with this:
-
-                      ElevatedButton(
+                      : ElevatedButton(
                           onPressed: isLoading
                               ? null
                               : () {
                                   _debouncer.run(
                                     action: () async {
-                                      // Debug print for payload
-                                      print(
-                                          "Initiating subscription with plan: ${plans[selectedIndex]['duration']}, voucher applied: $isVoucherApplied");
-
                                       final paymentUrl = await paymentNotifier
                                           .initiateSubscription(
                                         "${plans[selectedIndex]['duration']}",
@@ -143,8 +141,6 @@ class SubscriptionView extends ConsumerWidget with CommonWidgets {
 
                                       if (paymentUrl != null &&
                                           paymentUrl.isNotEmpty) {
-                                        print(
-                                            "Subscription URL received: $paymentUrl");
                                         // Valid URL received, navigate to checkout
                                         Nav().pushReplacement(
                                             EasyCheckout(url: paymentUrl));
@@ -153,16 +149,13 @@ class SubscriptionView extends ConsumerWidget with CommonWidgets {
                                         final paymentState =
                                             ref.read(paymentNotifierProvider);
                                         if (paymentState.hasError) {
-                                          print(
-                                              "Subscription error: ${paymentState.error}");
                                           Fluttertoast.showToast(
                                             msg: paymentState.error.toString(),
                                           );
                                         } else {
                                           // Could be already subscribed
                                           Fluttertoast.showToast(
-                                            msg:
-                                                "You already have an active subscription",
+                                            msg: alreadyActiveSubscriptionMsg,
                                           );
                                         }
                                       }

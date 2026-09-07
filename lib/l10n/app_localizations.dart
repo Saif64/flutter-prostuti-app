@@ -797,6 +797,120 @@ abstract class AppLocalizations {
   /// **'Premium'**
   String get premium;
 
+  /// No description provided for @premiumPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Plan'**
+  String get premiumPlanTitle;
+
+  /// No description provided for @standardPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard Plan'**
+  String get standardPlanTitle;
+
+  /// No description provided for @basicPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Plan'**
+  String get basicPlanTitle;
+
+  /// No description provided for @forOneYear.
+  ///
+  /// In en, this message translates to:
+  /// **'for 1 year'**
+  String get forOneYear;
+
+  /// No description provided for @forSixMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'for 6 months'**
+  String get forSixMonths;
+
+  /// No description provided for @forOneMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'for 1 month'**
+  String get forOneMonth;
+
+  /// No description provided for @alreadyActiveSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have an active subscription'**
+  String get alreadyActiveSubscription;
+
+  /// No description provided for @upgradeToPremiumTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to Premium?'**
+  String get upgradeToPremiumTitle;
+
+  /// No description provided for @premiumIntroDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Prostuti Premium gives you unlimited access to all courses, mock tests, flashcards, and direct conversations with tutors, so you can prepare with everything you need in one place.'**
+  String get premiumIntroDescription;
+
+  /// No description provided for @premiumTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything you need to prepare, in one subscription'**
+  String get premiumTagline;
+
+  /// No description provided for @whyUpgradeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why should you upgrade?'**
+  String get whyUpgradeTitle;
+
+  /// No description provided for @benefitCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Access to all courses'**
+  String get benefitCoursesTitle;
+
+  /// No description provided for @benefitCoursesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock every current and upcoming course, along with all of its lessons and materials.'**
+  String get benefitCoursesDesc;
+
+  /// No description provided for @benefitMockTestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited mock tests'**
+  String get benefitMockTestsTitle;
+
+  /// No description provided for @benefitMockTestsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice with unlimited mock tests, quizzes, and segment tests to track your progress.'**
+  String get benefitMockTestsDesc;
+
+  /// No description provided for @benefitFlashcardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Flashcards for quick revision'**
+  String get benefitFlashcardsTitle;
+
+  /// No description provided for @benefitFlashcardsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Revise faster with flashcards covering every subject and topic.'**
+  String get benefitFlashcardsDesc;
+
+  /// No description provided for @benefitTutorChatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct chat with tutors'**
+  String get benefitTutorChatTitle;
+
+  /// No description provided for @benefitTutorChatDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Get your doubts cleared by chatting directly with tutors whenever you need help.'**
+  String get benefitTutorChatDesc;
+
   /// No description provided for @price.
   ///
   /// In en, this message translates to:

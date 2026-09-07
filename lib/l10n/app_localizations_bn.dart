@@ -358,6 +358,63 @@ class AppLocalizationsBn extends AppLocalizations {
   String get premium => 'প্রিমিয়াম';
 
   @override
+  String get premiumPlanTitle => 'প্রিমিয়াম প্ল্যান';
+
+  @override
+  String get standardPlanTitle => 'স্ট্যান্ডার্ড প্ল্যান';
+
+  @override
+  String get basicPlanTitle => 'বেসিক প্ল্যান';
+
+  @override
+  String get forOneYear => '১ বছরের জন্য';
+
+  @override
+  String get forSixMonths => '৬ মাসের জন্য';
+
+  @override
+  String get forOneMonth => '১ মাসের জন্য';
+
+  @override
+  String get alreadyActiveSubscription => 'আপনার ইতিমধ্যে একটি সক্রিয় সাবস্ক্রিপশন আছে';
+
+  @override
+  String get upgradeToPremiumTitle => 'প্রিমিয়ামে আপগ্রেড করুন?';
+
+  @override
+  String get premiumIntroDescription => 'প্রস্তুতি প্রিমিয়াম আপনাকে দেয় সকল কোর্স, মক টেস্ট, ফ্ল্যাশকার্ড এবং টিউটরদের সাথে সরাসরি কথা বলার সুযোগ, যাতে প্রস্তুতির জন্য প্রয়োজনীয় সবকিছু আপনি এক জায়গাতেই পেয়ে যান।';
+
+  @override
+  String get premiumTagline => 'প্রস্তুতির জন্য প্রয়োজনীয় সবকিছু, একটি সাবস্ক্রিপশনেই';
+
+  @override
+  String get whyUpgradeTitle => 'আপনি কেনো আপগ্রেড করবেন?';
+
+  @override
+  String get benefitCoursesTitle => 'সকল কোর্সে অ্যাক্সেস';
+
+  @override
+  String get benefitCoursesDesc => 'বর্তমান ও আসন্ন সকল কোর্স, তার লেসন ও ম্যাটেরিয়ালসহ ব্যবহার করুন।';
+
+  @override
+  String get benefitMockTestsTitle => 'সীমাহীন মক টেস্ট';
+
+  @override
+  String get benefitMockTestsDesc => 'সীমাহীন মক টেস্ট, কুইজ ও সেগমেন্ট টেস্ট দিয়ে অনুশীলন করে নিজের অগ্রগতি যাচাই করুন।';
+
+  @override
+  String get benefitFlashcardsTitle => 'দ্রুত রিভিশনের জন্য ফ্ল্যাশকার্ড';
+
+  @override
+  String get benefitFlashcardsDesc => 'প্রতিটি বিষয় ও টপিকের ফ্ল্যাশকার্ড দিয়ে দ্রুত রিভিশন করুন।';
+
+  @override
+  String get benefitTutorChatTitle => 'টিউটরদের সাথে সরাসরি চ্যাট';
+
+  @override
+  String get benefitTutorChatDesc => 'প্রয়োজনে টিউটরদের সাথে সরাসরি চ্যাট করে আপনার সমস্যার সমাধান নিন।';
+
+  @override
   String get price => 'মূল্য';
 
   @override

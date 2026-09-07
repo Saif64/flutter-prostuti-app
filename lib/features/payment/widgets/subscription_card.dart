@@ -3,14 +3,14 @@ import 'package:gap/gap.dart';
 import 'package:prostuti/core/services/size_config.dart';
 
 class SubscriptionCard extends StatelessWidget {
-  final String plan, price, duration;
+  final String planTitle, price, durationText;
   final bool isSelected; // To determine if this card is selected
 
   const SubscriptionCard({
     super.key,
-    required this.plan,
+    required this.planTitle,
     required this.price,
-    required this.duration,
+    required this.durationText,
     this.isSelected = false, // Defaults to false if not provided
   });
 
@@ -36,7 +36,7 @@ class SubscriptionCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '$plan Plan',
+                planTitle,
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!
@@ -52,7 +52,7 @@ class SubscriptionCard extends StatelessWidget {
                       .copyWith(fontWeight: FontWeight.w700),
                   children: <TextSpan>[
                     TextSpan(
-                        text: 'for $duration',
+                        text: durationText,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w400,
                             )),
