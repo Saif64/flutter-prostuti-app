@@ -26,6 +26,60 @@ class TypingEvent {
   }
 }
 
+// Course notice/enrollment events. Backend payload shape is not documented,
+// so every field is optional and parsing never throws - a malformed payload
+// still produces an event (with null fields) rather than being dropped.
+class CourseNoticeEvent {
+  final String? courseName;
+  final String? noticeText;
+  final dynamic raw;
+
+  CourseNoticeEvent({this.courseName, this.noticeText, this.raw});
+
+  factory CourseNoticeEvent.fromJson(dynamic json) {
+    String? courseName;
+    String? noticeText;
+    try {
+      if (json is Map) {
+        final course = json['course'] ?? json['courseId'] ?? json['course_id'];
+        courseName = (json['courseName'] ??
+                json['course_name'] ??
+                (course is Map ? course['name'] : null))
+            ?.toString();
+        noticeText =
+            (json['notice'] ?? json['message'] ?? json['title'])?.toString();
+      }
+    } catch (e) {
+      debugPrint('Error parsing CourseNoticeEvent: $e');
+    }
+    return CourseNoticeEvent(
+        courseName: courseName, noticeText: noticeText, raw: json);
+  }
+}
+
+class CourseEnrolledEvent {
+  final String? courseName;
+  final dynamic raw;
+
+  CourseEnrolledEvent({this.courseName, this.raw});
+
+  factory CourseEnrolledEvent.fromJson(dynamic json) {
+    String? courseName;
+    try {
+      if (json is Map) {
+        final course = json['course'] ?? json['courseId'] ?? json['course_id'];
+        courseName = (json['courseName'] ??
+                json['course_name'] ??
+                (course is Map ? course['name'] : null))
+            ?.toString();
+      }
+    } catch (e) {
+      debugPrint('Error parsing CourseEnrolledEvent: $e');
+    }
+    return CourseEnrolledEvent(courseName: courseName, raw: json);
+  }
+}
+
 // Connection status enum
 enum ConnectionStatus {
   disconnected,
@@ -37,31 +91,39 @@ enum ConnectionStatus {
 
 // Providers
 final socketConnectionStatusProvider = StreamProvider<ConnectionStatus>((ref) {
-  return ChatSocketService().connectionStatus;
+  return SocketService().connectionStatus;
 });
 
 final chatMessagesStreamProvider =
     StreamProvider.family<ChatMessage, String>((ref, conversationId) {
-  return ChatSocketService()
+  return SocketService()
       .messageStream
       .where((message) => message.conversationId == conversationId);
 });
 
 final typingEventsStreamProvider =
     StreamProvider.family<TypingEvent, String>((ref, conversationId) {
-  return ChatSocketService()
+  return SocketService()
       .typingStream
       .where((event) => event.conversationId == conversationId);
 });
 
 final broadcastsStreamProvider = StreamProvider<BroadcastRequest>((ref) {
-  return ChatSocketService().broadcastStream;
+  return SocketService().broadcastStream;
 });
 
-class ChatSocketService {
-  static final ChatSocketService _instance = ChatSocketService._internal();
+final courseNoticeStreamProvider = StreamProvider<CourseNoticeEvent>((ref) {
+  return SocketService().courseNoticeStream;
+});
 
-  factory ChatSocketService() => _instance;
+final courseEnrolledStreamProvider = StreamProvider<CourseEnrolledEvent>((ref) {
+  return SocketService().courseEnrolledStream;
+});
+
+class SocketService {
+  static final SocketService _instance = SocketService._internal();
+
+  factory SocketService() => _instance;
 
   // Stream controllers for different event types
   final StreamController<ConnectionStatus> _connectionStatusController =
@@ -74,6 +136,10 @@ class ChatSocketService {
       StreamController<TypingEvent>.broadcast();
   final StreamController<BroadcastRequest> _broadcastController =
       StreamController<BroadcastRequest>.broadcast();
+  final StreamController<CourseNoticeEvent> _courseNoticeController =
+      StreamController<CourseNoticeEvent>.broadcast();
+  final StreamController<CourseEnrolledEvent> _courseEnrolledController =
+      StreamController<CourseEnrolledEvent>.broadcast();
 
   // Expose streams
   Stream<ConnectionStatus> get connectionStatus =>
@@ -87,6 +153,12 @@ class ChatSocketService {
 
   Stream<BroadcastRequest> get broadcastStream => _broadcastController.stream;
 
+  Stream<CourseNoticeEvent> get courseNoticeStream =>
+      _courseNoticeController.stream;
+
+  Stream<CourseEnrolledEvent> get courseEnrolledStream =>
+      _courseEnrolledController.stream;
+
   IO.Socket? _socket;
   bool _isConnected = false;
   Timer? _reconnectTimer;
@@ -97,7 +169,7 @@ class ChatSocketService {
   bool _isInitializing = false;
   Completer<bool>? _initCompleter;
 
-  ChatSocketService._internal();
+  SocketService._internal();
 
   bool get isConnected => _isConnected;
 
@@ -323,6 +395,28 @@ class ChatSocketService {
         }
       }
     });
+
+    // Course notice events - a student's enrolled course has a new notice
+    _socket?.on('COURSE_NOTICE_NOTIFICATION', (data) {
+      debugPrint('COURSE_NOTICE_NOTIFICATION: $data');
+      try {
+        _courseNoticeController.add(CourseNoticeEvent.fromJson(data));
+      } catch (e) {
+        debugPrint('Error handling COURSE_NOTICE_NOTIFICATION: $e');
+        _courseNoticeController.add(CourseNoticeEvent(raw: data));
+      }
+    });
+
+    // Course enrollment events - a student's enrollment was confirmed
+    _socket?.on('COURSE_ENROLLED', (data) {
+      debugPrint('COURSE_ENROLLED: $data');
+      try {
+        _courseEnrolledController.add(CourseEnrolledEvent.fromJson(data));
+      } catch (e) {
+        debugPrint('Error handling COURSE_ENROLLED: $e');
+        _courseEnrolledController.add(CourseEnrolledEvent(raw: data));
+      }
+    });
   }
 
   void _attemptReconnect() {
@@ -427,5 +521,7 @@ class ChatSocketService {
     _typingController.close();
     _stopTypingController.close();
     _broadcastController.close();
+    _courseNoticeController.close();
+    _courseEnrolledController.close();
   }
 }

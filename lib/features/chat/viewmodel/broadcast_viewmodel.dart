@@ -4,19 +4,19 @@ import 'package:flutter/foundation.dart';
 import 'package:prostuti/features/chat/model/broadcast_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/services/socket_service.dart';
 import '../repository/chat_repo.dart';
-import '../socket_service.dart';
 
 part 'broadcast_viewmodel.g.dart';
 
 @riverpod
 class BroadcastNotifier extends _$BroadcastNotifier {
-  late final ChatSocketService _socketService;
+  late final SocketService _socketService;
   StreamSubscription? _broadcastSubscription;
 
   @override
   Future<List<BroadcastRequest>> build() async {
-    _socketService = ChatSocketService();
+    _socketService = SocketService();
     await _socketService.initSocket();
     _setupStreamListeners();
 

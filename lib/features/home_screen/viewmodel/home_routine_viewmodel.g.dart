@@ -7,7 +7,7 @@ part of 'home_routine_viewmodel.dart';
 // **************************************************************************
 
 String _$homeRoutineViewModelHash() =>
-    r'a9809dfbcd6eff10be8d75971c7e5a82979aadb3';
+    r'cf9d49267d76a029d1be0ea2089dfc71115abb06';
 
 /// See also [HomeRoutineViewModel].
 @ProviderFor(HomeRoutineViewModel)

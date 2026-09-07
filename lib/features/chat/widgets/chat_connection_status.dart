@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prostuti/core/services/localization_service.dart';
-
-import '../socket_service.dart';
+import 'package:prostuti/core/services/socket_service.dart';
 
 class ChatConnectionStatus extends ConsumerWidget {
   const ChatConnectionStatus({super.key});
@@ -85,8 +84,8 @@ class ChatConnectionStatus extends ConsumerWidget {
                 TextButton(
                   onPressed: () {
                     // Attempt to reconnect manually
-                    ChatSocketService().disconnect();
-                    ChatSocketService().initSocket();
+                    SocketService().disconnect();
+                    SocketService().initSocket();
                   },
                   style: TextButton.styleFrom(
                     padding:

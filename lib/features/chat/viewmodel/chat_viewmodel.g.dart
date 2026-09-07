@@ -6,7 +6,7 @@ part of 'chat_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$socketInitializerHash() => r'1f7239f0ddfdfcb2884a87d1b9fec7d503580604';
+String _$socketInitializerHash() => r'3464fcf4db03f77285d30bd78c5b78aeb7a06474';
 
 /// See also [socketInitializer].
 @ProviderFor(socketInitializer)
@@ -58,7 +58,7 @@ final unreadMessagesNotifierProvider = AutoDisposeAsyncNotifierProvider<
 
 typedef _$UnreadMessagesNotifier = AutoDisposeAsyncNotifier<UnreadCountData?>;
 String _$chatMessagesNotifierHash() =>
-    r'36135a4fa3e25675cf509426a0fbfb69c4b1319d';
+    r'1f7a43f56494c486c4070941a13f6dc4334a0c6b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -229,7 +229,7 @@ class _ChatMessagesNotifierProviderElement
 }
 
 String _$typingIndicatorNotifierHash() =>
-    r'f2617bd757d5d34b98eb0ba1d1b1052e34224fc5';
+    r'9cb951f0359835a200faf4ce1f3141f8dbeb8e42';
 
 /// See also [TypingIndicatorNotifier].
 @ProviderFor(TypingIndicatorNotifier)

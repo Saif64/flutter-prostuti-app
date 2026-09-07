@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prostuti/common/widgets/common_widgets/common_widgets.dart';
 import 'package:prostuti/core/services/localization_service.dart';
-import 'package:prostuti/features/chat/socket_service.dart';
+import 'package:prostuti/core/services/socket_service.dart';
 import 'package:prostuti/features/chat/viewmodel/chat_viewmodel.dart';
 import 'package:prostuti/features/chat/widgets/chat_input_field.dart';
 import 'package:prostuti/features/chat/widgets/chat_message_item.dart';

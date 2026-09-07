@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'broadcast_viewmodel.dart';
+part of 'notification_badge_viewmodel.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$broadcastNotifierHash() => r'32ee8e129cfe23d54db5d4453ff940f7b5e7e846';
+String _$notificationBadgeCountHash() =>
+    r'e04e857584a9b791799cd32820a7819ee9a85958';
 
-/// See also [BroadcastNotifier].
-@ProviderFor(BroadcastNotifier)
-final broadcastNotifierProvider = AutoDisposeAsyncNotifierProvider<
-    BroadcastNotifier, List<BroadcastRequest>>.internal(
-  BroadcastNotifier.new,
-  name: r'broadcastNotifierProvider',
+/// See also [NotificationBadgeCount].
+@ProviderFor(NotificationBadgeCount)
+final notificationBadgeCountProvider =
+    NotifierProvider<NotificationBadgeCount, int>.internal(
+  NotificationBadgeCount.new,
+  name: r'notificationBadgeCountProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$broadcastNotifierHash,
+      : _$notificationBadgeCountHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$BroadcastNotifier = AutoDisposeAsyncNotifier<List<BroadcastRequest>>;
+typedef _$NotificationBadgeCount = Notifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

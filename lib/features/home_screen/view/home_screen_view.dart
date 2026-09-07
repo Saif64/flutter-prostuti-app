@@ -24,6 +24,8 @@ import '../../flashcard/view/flashcard_study_view.dart';
 import '../../flashcard/view/flashcard_view.dart';
 import '../../flashcard/viewmodel/flashcard_viewmodel.dart';
 import '../../notification/view/notification_view.dart';
+import '../../notification/viewmodel/notification_badge_viewmodel.dart';
+import '../../notification/widgets/notification_socket_listener.dart';
 import '../../profile/view/profile_view.dart';
 import '../../profile/viewmodel/profile_viewmodel.dart';
 import '../widget/category_card.dart';
@@ -64,6 +66,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
     if (widget.initialIndex != null) {
       _currentIndex = widget.initialIndex!;
+      if (_currentIndex == 4) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ref.read(notificationBadgeCountProvider.notifier).reset();
+        });
+      }
     }
   }
 
@@ -71,6 +78,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     setState(() {
       _currentIndex = index;
     });
+    if (index == 4) {
+      ref.read(notificationBadgeCountProvider.notifier).reset();
+    }
   }
 
   @override
@@ -84,90 +94,106 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       }
     }
 
-    return Scaffold(
-      body: _buildCurrentTab(),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: _handleTabChange,
-          elevation: 10,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          type: BottomNavigationBarType.fixed,
-          showUnselectedLabels: true,
-          selectedItemColor: Theme.of(context).colorScheme.secondary,
-          unselectedItemColor: AppColors.textTertiaryLight,
-          showSelectedLabels: true,
-          selectedLabelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).primaryColor),
-          unselectedLabelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-              fontWeight: FontWeight.w600, color: AppColors.textTertiaryLight),
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _currentIndex == 0
-                    ? "assets/icons/bottom_nav_home_select.svg"
-                    : "assets/icons/bottom_nav_home_unselect.svg",
-                colorFilter: ColorFilter.mode(
-                    _currentIndex == 0
-                        ? Theme.of(context).colorScheme.secondary
-                        : AppColors.textTertiaryLight,
-                    BlendMode.srcIn),
+    final unreadNotificationCount = ref.watch(notificationBadgeCountProvider);
+
+    return NotificationSocketListener(
+      child: Scaffold(
+        body: _buildCurrentTab(),
+        bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: _handleTabChange,
+            elevation: 10,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            type: BottomNavigationBarType.fixed,
+            showUnselectedLabels: true,
+            selectedItemColor: Theme.of(context).colorScheme.secondary,
+            unselectedItemColor: AppColors.textTertiaryLight,
+            showSelectedLabels: true,
+            selectedLabelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).primaryColor),
+            unselectedLabelStyle: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textTertiaryLight),
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 0
+                      ? "assets/icons/bottom_nav_home_select.svg"
+                      : "assets/icons/bottom_nav_home_unselect.svg",
+                  colorFilter: ColorFilter.mode(
+                      _currentIndex == 0
+                          ? Theme.of(context).colorScheme.secondary
+                          : AppColors.textTertiaryLight,
+                      BlendMode.srcIn),
+                ),
+                label: "হোম",
               ),
-              label: "হোম",
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _currentIndex == 1
-                    ? "assets/icons/bottom_nav_flash_card_select.svg"
-                    : "assets/icons/bottom_nav_flash_card_unselect.svg",
-                colorFilter: ColorFilter.mode(
-                    _currentIndex == 1
-                        ? Theme.of(context).colorScheme.secondary
-                        : AppColors.textTertiaryLight,
-                    BlendMode.srcATop),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 1
+                      ? "assets/icons/bottom_nav_flash_card_select.svg"
+                      : "assets/icons/bottom_nav_flash_card_unselect.svg",
+                  colorFilter: ColorFilter.mode(
+                      _currentIndex == 1
+                          ? Theme.of(context).colorScheme.secondary
+                          : AppColors.textTertiaryLight,
+                      BlendMode.srcATop),
+                ),
+                label: "ফ্ল্যাশ কার্ড",
               ),
-              label: "ফ্ল্যাশ কার্ড",
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _currentIndex == 2
-                    ? "assets/icons/bottom_nav_chat_select.svg"
-                    : "assets/icons/bottom_nav_chat_unselect.svg",
-                colorFilter: ColorFilter.mode(
-                    _currentIndex == 2
-                        ? Theme.of(context).colorScheme.secondary
-                        : AppColors.textTertiaryLight,
-                    BlendMode.srcIn),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 2
+                      ? "assets/icons/bottom_nav_chat_select.svg"
+                      : "assets/icons/bottom_nav_chat_unselect.svg",
+                  colorFilter: ColorFilter.mode(
+                      _currentIndex == 2
+                          ? Theme.of(context).colorScheme.secondary
+                          : AppColors.textTertiaryLight,
+                      BlendMode.srcIn),
+                ),
+                label: "ম্যাসেজ",
               ),
-              label: "ম্যাসেজ",
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _currentIndex == 3
-                    ? "assets/icons/bottom_nav_test_select.svg"
-                    : "assets/icons/bottom_nav_test_unselect.svg",
-                colorFilter: ColorFilter.mode(
-                    _currentIndex == 3
-                        ? Theme.of(context).colorScheme.secondary
-                        : AppColors.textTertiaryLight,
-                    BlendMode.srcIn),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  _currentIndex == 3
+                      ? "assets/icons/bottom_nav_test_select.svg"
+                      : "assets/icons/bottom_nav_test_unselect.svg",
+                  colorFilter: ColorFilter.mode(
+                      _currentIndex == 3
+                          ? Theme.of(context).colorScheme.secondary
+                          : AppColors.textTertiaryLight,
+                      BlendMode.srcIn),
+                ),
+                label: "টেস্ট",
               ),
-              label: "টেস্ট",
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                _currentIndex == 4
-                    ? "assets/icons/bottom_nav_notification_select.svg"
-                    : "assets/icons/bottom_nav_notification_unselect.svg",
-                colorFilter: ColorFilter.mode(
+              BottomNavigationBarItem(
+                icon: Badge(
+                  isLabelVisible: unreadNotificationCount > 0,
+                  label: Text(
+                    unreadNotificationCount > 9
+                        ? '9+'
+                        : '$unreadNotificationCount',
+                  ),
+                  child: SvgPicture.asset(
                     _currentIndex == 4
-                        ? Theme.of(context).colorScheme.secondary
-                        : AppColors.textTertiaryLight,
-                    BlendMode.srcIn),
+                        ? "assets/icons/bottom_nav_notification_select.svg"
+                        : "assets/icons/bottom_nav_notification_unselect.svg",
+                    colorFilter: ColorFilter.mode(
+                        _currentIndex == 4
+                            ? Theme.of(context).colorScheme.secondary
+                            : AppColors.textTertiaryLight,
+                        BlendMode.srcIn),
+                  ),
+                ),
+                label: "নটিফিকেশন",
               ),
-              label: "নটিফিকেশন",
-            ),
-          ]),
+            ]),
+      ),
     );
   }
 

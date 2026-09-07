@@ -4,16 +4,16 @@ import 'package:flutter/foundation.dart';
 import 'package:prostuti/features/chat/model/conversation_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/services/socket_service.dart';
 import '../model/chat_model.dart';
 import '../repository/chat_repo.dart';
-import '../socket_service.dart';
 
 part 'chat_viewmodel.g.dart';
 
 // Provider to initialize the socket once at app startup
 @riverpod
 Future<bool> socketInitializer(SocketInitializerRef ref) async {
-  final socketService = ChatSocketService();
+  final socketService = SocketService();
   return await socketService.initSocket();
 }
 
@@ -106,7 +106,7 @@ class UnreadMessagesNotifier extends _$UnreadMessagesNotifier {
 // Improved chat messages provider that leverages streams
 @riverpod
 class ChatMessagesNotifier extends _$ChatMessagesNotifier {
-  late final ChatSocketService _socketService;
+  late final SocketService _socketService;
   bool _isLoadingMore = false;
   int _currentPage = 1;
   bool _hasMoreMessages = true;
@@ -117,7 +117,7 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
 
   @override
   Future<List<ChatMessage>> build(String conversationId) async {
-    _socketService = ChatSocketService();
+    _socketService = SocketService();
 
     // Wait for socket initialization
     try {
@@ -249,7 +249,7 @@ class TypingIndicatorNotifier extends _$TypingIndicatorNotifier {
 
   @override
   Map<String, String> build() {
-    final socketService = ChatSocketService();
+    final socketService = SocketService();
 
     // Listen to typing events
     _typingSubscription = socketService.typingStream.listen((event) {
