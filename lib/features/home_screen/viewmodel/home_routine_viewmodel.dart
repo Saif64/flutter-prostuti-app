@@ -4,6 +4,7 @@ import 'package:prostuti/features/course/my_course/model/my_course_model.dart';
 import 'package:prostuti/features/course/my_course/repository/my_course_repo.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../common/widgets/time_converter.dart';
 import '../../course/course_details/model/course_details_model.dart';
 import '../model/home_screen_model.dart';
 
@@ -78,8 +79,11 @@ class HomeRoutineViewModel extends _$HomeRoutineViewModel {
   List<HomeRoutineActivity> _parseActivitiesForToday(
       CourseDetails courseDetails, String courseName) {
     List<HomeRoutineActivity> activities = [];
-    final today = DateTime.now();
-    final startOfToday = DateTime(today.year, today.month, today.day);
+    final today = TimeConverter.nowInDhaka();
+    // Built with DateTime.utc (not the local constructor) so it stays in the
+    // same shifted-epoch domain as TimeConverter's Dhaka-time values and
+    // compares correctly regardless of the device's own timezone.
+    final startOfToday = DateTime.utc(today.year, today.month, today.day);
     final endOfToday = startOfToday
         .add(const Duration(days: 1))
         .subtract(const Duration(seconds: 1));
@@ -91,7 +95,8 @@ class HomeRoutineViewModel extends _$HomeRoutineViewModel {
       if (lesson.recodedClasses != null) {
         for (var recordedClass in lesson.recodedClasses!) {
           if (recordedClass.classDate != null) {
-            final dateTime = DateTime.parse(recordedClass.classDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(recordedClass.classDate!));
             if (dateTime.isAfter(startOfToday) &&
                 dateTime.isBefore(endOfToday)) {
               activities.add(HomeRoutineActivity(
@@ -112,7 +117,8 @@ class HomeRoutineViewModel extends _$HomeRoutineViewModel {
       if (lesson.assignments != null) {
         for (var assignment in lesson.assignments!) {
           if (assignment.unlockDate != null) {
-            final dateTime = DateTime.parse(assignment.unlockDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(assignment.unlockDate!));
             if (dateTime.isAfter(startOfToday) &&
                 dateTime.isBefore(endOfToday)) {
               activities.add(HomeRoutineActivity(
@@ -133,7 +139,8 @@ class HomeRoutineViewModel extends _$HomeRoutineViewModel {
       if (lesson.tests != null) {
         for (var test in lesson.tests!) {
           if (test.publishDate != null) {
-            final dateTime = DateTime.parse(test.publishDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(test.publishDate!));
             if (dateTime.isAfter(startOfToday) &&
                 dateTime.isBefore(endOfToday)) {
               activities.add(HomeRoutineActivity(
@@ -153,7 +160,8 @@ class HomeRoutineViewModel extends _$HomeRoutineViewModel {
       if (lesson.resources != null) {
         for (var resource in lesson.resources!) {
           if (resource.resourceDate != null) {
-            final dateTime = DateTime.parse(resource.resourceDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(resource.resourceDate!));
             if (dateTime.isAfter(startOfToday) &&
                 dateTime.isBefore(endOfToday)) {
               activities.add(HomeRoutineActivity(

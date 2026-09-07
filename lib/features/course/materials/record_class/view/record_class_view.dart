@@ -4,6 +4,7 @@ import 'package:prostuti/common/widgets/common_widgets/common_widgets.dart';
 import 'package:prostuti/features/course/materials/record_class/view/record_class_details_view.dart';
 import 'package:prostuti/features/course/materials/shared/widgets/material_list_skeleton.dart';
 
+import '../../../../../common/widgets/time_converter.dart';
 import '../../../course_details/viewmodel/course_details_vm.dart';
 import '../../../course_list/viewmodel/get_course_by_id.dart';
 import '../../get_material_completion.dart';
@@ -65,19 +66,13 @@ class RecordClassViewState extends ConsumerState<RecordClassView>
                                         j++)
                                       InkWell(
                                         onTap: () {
-                                          DateTime parsedDate = DateTime.parse(
-                                              courseDetails
-                                                  .data!
-                                                  .lessons![i]
-                                                  .recodedClasses![j]
-                                                  .classDate!);
-                                          DateTime now = DateTime.now();
-                                          if ((parsedDate.day == now.day &&
-                                                  parsedDate.month ==
-                                                      now.month &&
-                                                  parsedDate.year ==
-                                                      now.year) ||
-                                              (parsedDate.isBefore(now))) {
+                                          final classDate = courseDetails
+                                              .data!
+                                              .lessons![i]
+                                              .recodedClasses![j]
+                                              .classDate!;
+                                          if (TimeConverter.isUnlockedInDhaka(
+                                              classDate)) {
                                             ref
                                                 .watch(getRecordClassIdProvider
                                                     .notifier)

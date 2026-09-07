@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:prostuti/features/course/course_details/viewmodel/course_details_vm.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../../common/widgets/time_converter.dart';
 import '../../../course_details/model/course_details_model.dart';
 
 part 'routine_viewmodel.g.dart';
@@ -43,7 +44,8 @@ class RoutineViewModel extends _$RoutineViewModel {
       if (lesson.recodedClasses != null) {
         for (var recordedClass in lesson.recodedClasses!) {
           if (recordedClass.classDate != null) {
-            final dateTime = DateTime.parse(recordedClass.classDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(recordedClass.classDate!));
             activities.add(RoutineActivity(
               type: 'Class',
               title: recordedClass.recodeClassName ?? 'Class',
@@ -60,7 +62,8 @@ class RoutineViewModel extends _$RoutineViewModel {
       if (lesson.assignments != null) {
         for (var assignment in lesson.assignments!) {
           if (assignment.unlockDate != null) {
-            final dateTime = DateTime.parse(assignment.unlockDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(assignment.unlockDate!));
             activities.add(RoutineActivity(
               type: 'Assignment',
               title: assignment.assignmentNo ?? 'Assignment',
@@ -77,7 +80,8 @@ class RoutineViewModel extends _$RoutineViewModel {
       if (lesson.tests != null) {
         for (var test in lesson.tests!) {
           if (test.publishDate != null) {
-            final dateTime = DateTime.parse(test.publishDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(test.publishDate!));
             activities.add(RoutineActivity(
               type: 'Exam',
               title: test.name ?? 'Exam',
@@ -93,7 +97,8 @@ class RoutineViewModel extends _$RoutineViewModel {
       if (lesson.resources != null) {
         for (var resource in lesson.resources!) {
           if (resource.resourceDate != null) {
-            final dateTime = DateTime.parse(resource.resourceDate!);
+            final dateTime =
+                TimeConverter.toDhakaTime(DateTime.parse(resource.resourceDate!));
             activities.add(RoutineActivity(
               type: 'Resource',
               title: resource.name ?? 'Resource',
@@ -125,7 +130,7 @@ class RoutineViewModel extends _$RoutineViewModel {
   // Get upcoming activities from tomorrow onwards
   List<RoutineActivity> getUpcomingActivities() {
     final activities = state.value ?? [];
-    var tomorrow = DateTime.now().add(const Duration(days: 1));
+    var tomorrow = TimeConverter.nowInDhaka().add(const Duration(days: 1));
     tomorrow = DateTime(tomorrow.year, tomorrow.month,
         tomorrow.day); // Reset time to start of day
 

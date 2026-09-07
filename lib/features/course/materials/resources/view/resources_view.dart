@@ -4,6 +4,7 @@ import 'package:prostuti/common/widgets/common_widgets/common_widgets.dart';
 import 'package:prostuti/features/course/materials/resources/view/resource_details_view.dart';
 import 'package:prostuti/features/course/materials/resources/viewmodel/get_resource_by_id.dart';
 
+import '../../../../../common/widgets/time_converter.dart';
 import '../../../course_details/viewmodel/course_details_vm.dart';
 import '../../../course_list/viewmodel/get_course_by_id.dart';
 import '../../get_material_completion.dart';
@@ -63,14 +64,13 @@ class ResourcesViewState extends ConsumerState<ResourcesView>
                                       j++)
                                     InkWell(
                                       onTap: () {
-                                        DateTime parsedDate = DateTime.parse(
-                                            courseDetails.data!.lessons![i]
-                                                .resources![j].resourceDate!);
-                                        DateTime now = DateTime.now();
-                                        if ((parsedDate.day == now.day &&
-                                                parsedDate.month == now.month &&
-                                                parsedDate.year == now.year) ||
-                                            (parsedDate.isBefore(now))) {
+                                        final resourceDate = courseDetails
+                                            .data!
+                                            .lessons![i]
+                                            .resources![j]
+                                            .resourceDate!;
+                                        if (TimeConverter.isUnlockedInDhaka(
+                                            resourceDate)) {
                                           ref
                                               .watch(getResourceByIdProvider
                                                   .notifier)

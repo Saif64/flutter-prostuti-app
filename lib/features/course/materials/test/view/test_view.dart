@@ -8,6 +8,7 @@ import 'package:prostuti/features/course/materials/test/view/written_test_detail
 import 'package:prostuti/features/course/materials/test/viewmodel/get_test_by_id.dart';
 import 'package:prostuti/features/course/materials/test/viewmodel/test_viewmodel.dart';
 
+import '../../../../../common/widgets/time_converter.dart';
 import '../../../../../core/services/nav.dart';
 import '../../../course_list/viewmodel/get_course_by_id.dart';
 import '../../get_material_completion.dart';
@@ -221,21 +222,11 @@ class TestListViewState extends ConsumerState<TestListView>
     );
   }
 
-  isUnlocked(String s) {
-    DateTime parsedDate = DateTime.parse(s);
-    print(parsedDate);
-    DateTime now = DateTime.now();
-    return (parsedDate.day == now.day &&
-            parsedDate.month == now.month &&
-            parsedDate.year == now.year) ||
-        (parsedDate.isBefore(now));
+  bool isUnlocked(String s) {
+    return TimeConverter.isUnlockedInDhaka(s);
   }
 
   bool isToday(String s) {
-    DateTime parsedDate = DateTime.parse(s);
-    DateTime now = DateTime.now();
-    return (parsedDate.day == now.day &&
-        parsedDate.month == now.month &&
-        parsedDate.year == now.year);
+    return TimeConverter.isTodayInDhaka(s);
   }
 }

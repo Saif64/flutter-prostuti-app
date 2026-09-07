@@ -4,6 +4,7 @@ import 'package:prostuti/common/widgets/common_widgets/common_widgets.dart';
 import 'package:prostuti/features/course/materials/assignment/view/assignment_details_view.dart';
 import 'package:prostuti/features/course/materials/assignment/viewmodel/get_assignment_by_id.dart';
 
+import '../../../../../common/widgets/time_converter.dart';
 import '../../../course_details/viewmodel/course_details_vm.dart';
 import '../../../course_list/viewmodel/get_course_by_id.dart';
 import '../../get_material_completion.dart';
@@ -63,16 +64,13 @@ class AssignmentViewState extends ConsumerState<AssignmentView>
                                         j++)
                                       InkWell(
                                         onTap: () async {
-                                          DateTime parsedDate = DateTime.parse(
-                                              courseDetails.data!.lessons![i]
-                                                  .assignments![j].unlockDate!);
-                                          DateTime now = DateTime.now();
-                                          if ((parsedDate.day == now.day &&
-                                                  parsedDate.month ==
-                                                      now.month &&
-                                                  parsedDate.year ==
-                                                      now.year) ||
-                                              (parsedDate.isBefore(now))) {
+                                          final unlockDate = courseDetails
+                                              .data!
+                                              .lessons![i]
+                                              .assignments![j]
+                                              .unlockDate!;
+                                          if (TimeConverter.isUnlockedInDhaka(
+                                              unlockDate)) {
                                             ref
                                                 .watch(getAssignmentByIdProvider
                                                     .notifier)

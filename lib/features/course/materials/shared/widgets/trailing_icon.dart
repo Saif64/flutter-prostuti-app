@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../common/widgets/time_converter.dart';
+
 class TrailingIcon extends StatefulWidget {
   final String classDate;
   final bool isCompleted;
@@ -14,8 +16,8 @@ class TrailingIcon extends StatefulWidget {
 class _TrailingIconState extends State<TrailingIcon> {
   @override
   Widget build(BuildContext context) {
-    DateTime parsedDate = DateTime.parse(widget.classDate);
-    DateTime now = DateTime.now();
+    DateTime parsedDate = TimeConverter.toDhakaTime(DateTime.parse(widget.classDate));
+    DateTime now = TimeConverter.nowInDhaka();
 
     if (parsedDate.day == now.day &&
         parsedDate.month == now.month &&
