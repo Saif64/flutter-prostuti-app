@@ -1478,7 +1478,7 @@ abstract class AppLocalizations {
   /// No description provided for @myCalendar.
   ///
   /// In en, this message translates to:
-  /// **'My Calender'**
+  /// **'My Calendar'**
   String get myCalendar;
 
   /// No description provided for @routineLoadError.

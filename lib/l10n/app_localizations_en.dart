@@ -697,7 +697,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get seeMore => 'See More';
 
   @override
-  String get myCalendar => 'My Calender';
+  String get myCalendar => 'My Calendar';
 
   @override
   String get routineLoadError => 'Failed to Load Activities';
