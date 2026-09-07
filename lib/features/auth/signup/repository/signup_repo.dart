@@ -2,6 +2,7 @@ import 'package:prostuti/core/services/api_response.dart';
 import 'package:prostuti/core/services/dio_service.dart';
 import 'package:prostuti/core/services/error_handler.dart';
 import 'package:prostuti/core/services/error_response.dart';
+import 'package:prostuti/features/auth/category/model/category_constant.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/otp_model.dart';
@@ -70,11 +71,10 @@ class SignupRepo {
       }
 
       // Validate that categoryType is one of the valid options
-      final validCategories = ['Academic', 'Admission', 'Job'];
-      if (!validCategories.contains(payload['categoryType'])) {
+      if (!MainCategory.values.contains(payload['categoryType'])) {
         return ApiResponse.error(ErrorResponse(
             message:
-                "Invalid category type. Must be one of: ${validCategories.join(', ')}",
+                "Invalid category type. Must be one of: ${MainCategory.values.join(', ')}",
             success: false));
       }
 
