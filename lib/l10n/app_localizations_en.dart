@@ -1,5 +1,3 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -192,8 +190,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequired => 'Password is required';
 
   @override
-  String get passwordValidationMessage =>
-      'Password must contain at least one uppercase letter, one special character, and be at least 8 characters long';
+  String get passwordValidationMessage => 'Password must contain at least one uppercase letter, one special character, and be at least 8 characters long';
 
   @override
   String get category => 'Category';
@@ -247,8 +244,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clearYourDoubts => 'Clear Your Doubts';
 
   @override
-  String get onboardingDesc =>
-      'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.';
+  String get onboardingDesc => 'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.';
 
   @override
   String get getStarted => 'Get Started';
@@ -560,8 +556,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get visibilityDescription => 'Choose who can see your flashcards';
 
   @override
-  String get everyoneDescription =>
-      'Your flashcard will be visible to all users';
+  String get everyoneDescription => 'Your flashcard will be visible to all users';
 
   @override
   String get onlyMeDescription => 'Your flashcard will be visible only to you';
@@ -663,8 +658,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noMessageRequests => 'No message requests';
 
   @override
-  String get messageRequestDesc =>
-      'When someone sends you a message for the first time, it will appear here for your approval.';
+  String get messageRequestDesc => 'When someone sends you a message for the first time, it will appear here for your approval.';
 
   @override
   String get askAQuestion => 'Ask a Question';
@@ -679,8 +673,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sendQuestion => 'Send Question';
 
   @override
-  String get messageSent =>
-      'Your message has been sent! Teachers will respond soon.';
+  String get messageSent => 'Your message has been sent! Teachers will respond soon.';
 
   @override
   String get howItWorks => 'How it works';
@@ -695,8 +688,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get waitingForTeacher => 'Waiting for Teacher';
 
   @override
-  String get noMessagesYetDesc =>
-      'Your conversation will appear here once a teacher responds to your question.';
+  String get noMessagesYetDesc => 'Your conversation will appear here once a teacher responds to your question.';
 
   @override
   String get todaysRoutine => 'Today\'s Activities';
@@ -759,12 +751,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newQuestion => 'New Question';
 
   @override
-  String get questionSent =>
-      'Your question has been sent. A teacher will respond soon.';
+  String get questionSent => 'Your question has been sent. A teacher will respond soon.';
 
   @override
-  String get broadcastExpired =>
-      'Your question request has expired. Please try again.';
+  String get broadcastExpired => 'Your question request has expired. Please try again.';
 
   @override
   String get onlineStatus => 'Online';
@@ -905,8 +895,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get voucherExpired => 'This voucher has expired';
 
   @override
-  String get voucherNotApplicable =>
-      'This voucher is not applicable for this purchase';
+  String get voucherNotApplicable => 'This voucher is not applicable for this purchase';
 
   @override
   String get availableVouchers => 'Available Vouchers';
@@ -945,15 +934,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get vouchers => 'Vouchers';
 
   @override
-  String get pleaseSelectYourCategory =>
-      'Please select your preferred category';
+  String get pleaseSelectYourCategory => 'Please select your preferred category';
 
   @override
   String get subcategory => 'Subcategory';
 
   @override
-  String get pleaseSelectYourSubcategory =>
-      'Please select your preferred subcategory';
+  String get pleaseSelectYourSubcategory => 'Please select your preferred subcategory';
 
   @override
   String get noSubcategoriesFound => 'No subcategories found';
@@ -1067,8 +1054,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactUsForAnyQuestions => 'Contact us for any questions';
 
   @override
-  String get supportDescription =>
-      'Our support team is available to help you with any questions or issues you might have with the app.';
+  String get supportDescription => 'Our support team is available to help you with any questions or issues you might have with the app.';
 
   @override
   String get helplineCall => 'Call Helpline';

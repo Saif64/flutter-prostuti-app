@@ -6,7 +6,7 @@ part of 'mock_test_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mockTestViewmodelHash() => r'14e5db0b2f54e69e730a7be50bbb03c97c61a4c0';
+String _$mockTestViewmodelHash() => r'32833d90859efcfb25226c2f51b9bb20e02fd859';
 
 /// See also [MockTestViewmodel].
 @ProviderFor(MockTestViewmodel)

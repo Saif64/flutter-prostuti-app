@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:prostuti/features/auth/onboarding/view/onboarding_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../main.dart';
+import '../common/widgets/main_app_content.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

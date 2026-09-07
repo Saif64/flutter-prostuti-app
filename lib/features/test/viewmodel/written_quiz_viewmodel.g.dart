@@ -7,7 +7,7 @@ part of 'written_quiz_viewmodel.dart';
 // **************************************************************************
 
 String _$writtenQuizViewmodelHash() =>
-    r'6039c6811cddae61132f8eb9e3d6b69a0834e9c4';
+    r'0cb4070a979d9edaf00d426b44a8bd61e0a5cc33';
 
 /// See also [WrittenQuizViewmodel].
 @ProviderFor(WrittenQuizViewmodel)

@@ -1,13 +1,4 @@
+import 'bootstrap.dart';
 import 'flutter_config.dart';
-import 'main.dart';
 
-void main() {
-  FlavorConfig(
-    flavor: Flavor.staging,
-    name: "Staging",
-    baseUrl: "https://resilient-heart-staging.up.railway.app/api/v1",
-    socketBaseUrl: 'https://resilient-heart-staging.up.railway.app',
-  );
-
-  runMain();
-}
+void main() => bootstrap(Flavor.staging);

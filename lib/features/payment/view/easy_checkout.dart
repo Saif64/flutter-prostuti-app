@@ -1,6 +1,7 @@
 // lib/features/payment/view/easy_checkout.dart
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:prostuti/core/configs/app_urls.dart';
 import 'package:prostuti/core/services/nav.dart';
 import 'package:prostuti/features/payment/view/paymet_successful.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -61,15 +62,12 @@ class _EasyCheckoutState extends State<EasyCheckout> {
             onUrlChange: (change) {
               print("URL changed to: ${change.url}");
               if (change.url != null) {
-                if (change.url!.contains(
-                    "https://prostuti-app-teacher-admin-dashb-staging.up.railway.app/payment/success")) {
+                if (change.url!.contains(AppUrls.paymentSuccess)) {
                   Nav().pushReplacement(const PaymetSuccessful());
-                } else if (change.url!.contains(
-                    "https://prostuti-app-teacher-admin-dashb-staging.up.railway.app/payment/failed")) {
+                } else if (change.url!.contains(AppUrls.paymentFailed)) {
                   Nav().pop();
                   Fluttertoast.showToast(msg: "Failed to purchase the course.");
-                } else if (change.url!.contains(
-                    "https://prostuti-app-teacher-admin-dashb-staging.up.railway.app/payment/cancelled")) {
+                } else if (change.url!.contains(AppUrls.paymentCancelled)) {
                   Nav().pop();
                 }
               }

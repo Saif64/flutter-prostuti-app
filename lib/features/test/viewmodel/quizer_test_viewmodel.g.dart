@@ -7,7 +7,7 @@ part of 'quizer_test_viewmodel.dart';
 // **************************************************************************
 
 String _$quizerTestViewmodelHash() =>
-    r'01787a2618388bfbdb6be909a2a4c8a9228c77bc';
+    r'd34e96d45c49548dfcec8ad0d0c4a3f4b6deef49';
 
 /// See also [QuizerTestViewmodel].
 @ProviderFor(QuizerTestViewmodel)

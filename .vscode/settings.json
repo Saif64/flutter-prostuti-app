@@ -1,3 +1,4 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.27.3"
+  // Symlink that follows whatever .fvmrc pins, so a version bump needs no edit here.
+  "dart.flutterSdkPath": ".fvm/flutter_sdk"
 }

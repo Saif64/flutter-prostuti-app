@@ -1,0 +1,36 @@
+{
+  // Every configuration pins both a flavor and its entrypoint. Launching
+  // without them builds all three Android flavors at once, which fails.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Development",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": ["--flavor", "development"]
+    },
+    {
+      "name": "Staging",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_staging.dart",
+      "args": ["--flavor", "staging"]
+    },
+    {
+      "name": "Production",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_production.dart",
+      "args": ["--flavor", "production"]
+    },
+    {
+      "name": "Development (profile)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "lib/main_development.dart",
+      "args": ["--flavor", "development"]
+    }
+  ]
+}

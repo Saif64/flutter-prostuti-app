@@ -49,3 +49,15 @@ app.*.map.json
 
 # Claude Code project instructions
 CLAUDE.md
+
+# Android release signing secrets
+android/key.properties
+*.jks
+*.keystore
+
+# Mason rewrites mason-lock.json to an absolute, machine-specific path on every
+# `mason get`. .mason/bricks.json accepts a relative path, so it is committed —
+# but that only resolves when mason is run from the repo root.
+mason-lock.json
+.mason/*
+!.mason/bricks.json
