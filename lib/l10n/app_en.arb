@@ -372,5 +372,31 @@
   "supportDescription": "Our support team is available to help you with any questions or issues you might have with the app.",
   "helplineCall": "Call Helpline",
   "messageToSupport": "Message Support",
-  "seeProfile": "View Profile"
+  "seeProfile": "View Profile",
+  "freeTrialBadge": "Free Trial",
+  "trialDaysLeft": "{days} days left in your free trial",
+  "@trialDaysLeft": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "freeMockTestsLeft": "{remaining} of {limit} free mock tests left",
+  "@freeMockTestsLeft": {
+    "placeholders": {
+      "remaining": { "type": "int" },
+      "limit": { "type": "int" }
+    }
+  },
+  "trialEndedTitle": "Your free trial has ended",
+  "trialEndedMessage": "Subscribe to keep taking mock tests, watching recorded classes and preparing without limits.",
+  "trialLimitReachedTitle": "Free mock test limit reached",
+  "trialLimitReachedMessage": "You have used all {limit} free mock tests from your trial. Subscribe for unlimited access.",
+  "@trialLimitReachedMessage": {
+    "placeholders": {
+      "limit": { "type": "int" }
+    }
+  },
+  "featureNotInTrial": "This feature is not part of the free trial.",
+  "subscribeNow": "Subscribe Now",
+  "notNow": "Not Now"
 }

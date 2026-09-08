@@ -1124,4 +1124,40 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get seeProfile => 'প্রোফাইল দেখুন';
+
+  @override
+  String get freeTrialBadge => 'ফ্রি ট্রায়াল';
+
+  @override
+  String trialDaysLeft(int days) {
+    return 'আপনার ফ্রি ট্রায়ালের আর $days দিন বাকি';
+  }
+
+  @override
+  String freeMockTestsLeft(int remaining, int limit) {
+    return '$limitটির মধ্যে $remainingটি ফ্রি মক টেস্ট বাকি';
+  }
+
+  @override
+  String get trialEndedTitle => 'আপনার ফ্রি ট্রায়াল শেষ হয়েছে';
+
+  @override
+  String get trialEndedMessage => 'মক টেস্ট, রেকর্ডেড ক্লাস অব্যাহত রাখতে এবং সীমাহীন প্রস্তুতি নিতে সাবস্ক্রাইব করুন।';
+
+  @override
+  String get trialLimitReachedTitle => 'ফ্রি মক টেস্টের সীমা শেষ';
+
+  @override
+  String trialLimitReachedMessage(int limit) {
+    return 'আপনি ট্রায়ালের $limitটি ফ্রি মক টেস্টই ব্যবহার করে ফেলেছেন। সীমাহীন অ্যাক্সেসের জন্য সাবস্ক্রাইব করুন।';
+  }
+
+  @override
+  String get featureNotInTrial => 'এই ফিচারটি ফ্রি ট্রায়ালে অন্তর্ভুক্ত নয়।';
+
+  @override
+  String get subscribeNow => 'এখনই সাবস্ক্রাইব করুন';
+
+  @override
+  String get notNow => 'এখন নয়';
 }

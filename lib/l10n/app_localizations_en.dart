@@ -1124,4 +1124,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get seeProfile => 'View Profile';
+
+  @override
+  String get freeTrialBadge => 'Free Trial';
+
+  @override
+  String trialDaysLeft(int days) {
+    return '$days days left in your free trial';
+  }
+
+  @override
+  String freeMockTestsLeft(int remaining, int limit) {
+    return '$remaining of $limit free mock tests left';
+  }
+
+  @override
+  String get trialEndedTitle => 'Your free trial has ended';
+
+  @override
+  String get trialEndedMessage => 'Subscribe to keep taking mock tests, watching recorded classes and preparing without limits.';
+
+  @override
+  String get trialLimitReachedTitle => 'Free mock test limit reached';
+
+  @override
+  String trialLimitReachedMessage(int limit) {
+    return 'You have used all $limit free mock tests from your trial. Subscribe for unlimited access.';
+  }
+
+  @override
+  String get featureNotInTrial => 'This feature is not part of the free trial.';
+
+  @override
+  String get subscribeNow => 'Subscribe Now';
+
+  @override
+  String get notNow => 'Not Now';
 }

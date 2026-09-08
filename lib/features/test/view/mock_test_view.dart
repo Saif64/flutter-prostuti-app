@@ -8,6 +8,9 @@ import 'package:prostuti/features/test/viewmodel/written_quiz_viewmodel.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../common/widgets/common_widgets/common_widgets.dart';
+import '../../config/model/app_config.dart';
+import '../../payment/viewmodel/access_control.dart';
+import '../../payment/widgets/trial_gate.dart';
 import '../viewmodel/mock_test_viewmodel.dart';
 import '../viewmodel/subject_selector_viewmodel.dart';
 import '../widgets/question_standard_selector.dart';
@@ -86,7 +89,31 @@ class _MockTestLandingViewState extends ConsumerState<MockTestLandingView>
     );
   }
 
+  /// Checks the pre-subscription gate before a mock test is created.
+  ///
+  /// Returns false when the user is out of free-trial allowance, having already
+  /// shown them why and offered the subscription screen. Falls open on anything
+  /// unexpected — a gate we cannot evaluate must not block a paying user.
+  Future<bool> _ensureMockTestAllowed() async {
+    final FeatureAccess access;
+    try {
+      final status = await ref.read(accessControlProvider.future);
+      access = status.accessTo(FreeFeature.mockTest);
+    } catch (_) {
+      // Profile or config unreadable — let the test through rather than
+      // blocking someone over a request we could not evaluate.
+      return true;
+    }
+
+    if (access.allowed) return true;
+
+    if (mounted) await showTrialGateDialog(context, access);
+    return false;
+  }
+
   void _startWrittenMockTest() async {
+    if (!await _ensureMockTestAllowed()) return;
+
     final int questionCount = int.tryParse(questionCountController.text) ?? 0;
     final int time = _convertToTotalMinutes();
 
@@ -122,6 +149,13 @@ class _MockTestLandingViewState extends ConsumerState<MockTestLandingView>
 
       if (response != null && response.data != null) {
         if(response.success!){
+          // Counted only now that the quiz actually exists, so a failed
+          // request never costs the user part of their free allowance.
+          await ref
+              .read(accessControlProvider.notifier)
+              .recordUsage(FreeFeature.mockTest);
+
+          if (!mounted) return;
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -138,6 +172,8 @@ class _MockTestLandingViewState extends ConsumerState<MockTestLandingView>
   }
 
   void _startMCQMockTest() async {
+    if (!await _ensureMockTestAllowed()) return;
+
     final int questionCount = int.tryParse(questionCountController.text) ?? 0;
     final int time = _convertToTotalMinutes();
 
@@ -173,6 +209,13 @@ class _MockTestLandingViewState extends ConsumerState<MockTestLandingView>
 
       if (response != null && response.data != null) {
         if(response.success!){
+          // Counted only now that the quiz actually exists, so a failed
+          // request never costs the user part of their free allowance.
+          await ref
+              .read(accessControlProvider.notifier)
+              .recordUsage(FreeFeature.mockTest);
+
+          if (!mounted) return;
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -240,6 +283,8 @@ class _MockTestLandingViewState extends ConsumerState<MockTestLandingView>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Renders nothing unless the user is inside a free trial.
+            const TrialStatusBanner(feature: FreeFeature.mockTest),
             Text('টেস্ট টাইপ সিলেক্ট করুন',
                 style: Theme.of(context).textTheme.bodyMedium),
             const Gap(10),

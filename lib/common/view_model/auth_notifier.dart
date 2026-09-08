@@ -31,9 +31,25 @@ class AuthNotifier extends _$AuthNotifier {
     state = AsyncValue.data(accessToken);
   }
 
+  /// The only keys a logout is allowed to destroy.
+  ///
+  /// This used to be `prefs.clear()`, which also wiped the user's chosen
+  /// language, their recent searches, and (once the trial landed) their
+  /// device-local trial progress — so signing out silently reset the UI to
+  /// Bangla and handed out a fresh free trial. Removing the session keys by
+  /// name keeps logout to what logout actually means.
+  static const List<String> _sessionKeys = [
+    'accessToken',
+    'accessExpiryTime',
+    'refreshToken',
+    'refreshExpiryTime',
+  ];
+
   Future<void> clearTokens() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
+    for (final key in _sessionKeys) {
+      await prefs.remove(key);
+    }
     state = const AsyncValue.data(null);
   }
 

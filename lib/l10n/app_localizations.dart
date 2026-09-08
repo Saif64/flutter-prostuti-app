@@ -2332,6 +2332,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View Profile'**
   String get seeProfile;
+
+  /// No description provided for @freeTrialBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Free Trial'**
+  String get freeTrialBadge;
+
+  /// No description provided for @trialDaysLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days left in your free trial'**
+  String trialDaysLeft(int days);
+
+  /// No description provided for @freeMockTestsLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{remaining} of {limit} free mock tests left'**
+  String freeMockTestsLeft(int remaining, int limit);
+
+  /// No description provided for @trialEndedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your free trial has ended'**
+  String get trialEndedTitle;
+
+  /// No description provided for @trialEndedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe to keep taking mock tests, watching recorded classes and preparing without limits.'**
+  String get trialEndedMessage;
+
+  /// No description provided for @trialLimitReachedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Free mock test limit reached'**
+  String get trialLimitReachedTitle;
+
+  /// No description provided for @trialLimitReachedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have used all {limit} free mock tests from your trial. Subscribe for unlimited access.'**
+  String trialLimitReachedMessage(int limit);
+
+  /// No description provided for @featureNotInTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is not part of the free trial.'**
+  String get featureNotInTrial;
+
+  /// No description provided for @subscribeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe Now'**
+  String get subscribeNow;
+
+  /// No description provided for @notNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not Now'**
+  String get notNow;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
