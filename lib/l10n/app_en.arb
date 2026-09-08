@@ -62,6 +62,7 @@
   "phoneMustBe11Digits": "Phone number must be 11 digits",
   "passwordRequired": "Password is required",
   "passwordValidationMessage": "Password must contain at least one uppercase letter, one special character, and be at least 8 characters long",
+  "passwordMinLengthMessage": "Password must be at least 6 characters long",
   "category": "Category",
   "signupSuccessful": "Registration successful",
   "continueText": "Continue",

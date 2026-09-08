@@ -63,6 +63,7 @@
   "phoneMustBe11Digits": "ফোন নম্বর অবশ্যই ১১ সংখ্যার হতে হবে",
   "passwordRequired": "পাসওয়ার্ড প্রয়োজন",
   "passwordValidationMessage": "পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর, একটি বিশেষ চিহ্ন এবং ৮ অক্ষর থাকতে হবে",
+  "passwordMinLengthMessage": "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে",
   "category": "ক্যাটাগরি",
   "signupSuccessful": "সাইনআপ সফল হয়েছে",
   "continueText": "এগিয়ে যাই",
