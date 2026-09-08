@@ -219,10 +219,12 @@ class CategoryViewState extends ConsumerState<CategoryView> with CommonWidgets {
   void _registerWithCategory() {
     _debouncer.run(
         action: () async {
+          final email = ref.read(emailViewmodelProvider);
+
           final payload = {
             "otpCode": ref.read(otpProvider),
             "name": ref.read(nameViewmodelProvider),
-            "email": ref.read(emailViewmodelProvider),
+            if (email.isNotEmpty) "email": email,
             "phone": "+88${ref.read(phoneNumberProvider)}",
             "password": ref.read(passwordViewmodelProvider),
             "confirmPassword": ref.read(passwordViewmodelProvider),

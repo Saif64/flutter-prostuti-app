@@ -49,7 +49,7 @@ class RegisterViewState extends ConsumerState<RegisterView> {
 
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return context.l10n!.emailRequired;
+      return null;
     }
     // Basic email regex pattern
     final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
