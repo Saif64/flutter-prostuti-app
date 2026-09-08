@@ -102,6 +102,53 @@ void main() {
     });
   });
 
+  group('supportMobileNumber', () {
+    test('the live payload currently ships it empty', () {
+      // Staging serves "" until an admin fills it in. There is deliberately no
+      // hardcoded fallback, so the contact buttons stay hidden until then.
+      final config = AppConfig.fromJson(_stagingConfigResponse);
+      expect(config.supportMobileNumber, '');
+      expect(config.hasSupportNumber, isFalse);
+    });
+
+    test('a missing field is treated as empty, never null', () {
+      expect(AppConfig.fromJson(const {}).supportMobileNumber, '');
+      expect(AppConfig.fallback.supportMobileNumber, '');
+      expect(AppConfig.fallback.hasSupportNumber, isFalse);
+    });
+
+    test('whitespace alone does not count as a number', () {
+      final config = AppConfig.fromJson({
+        'data': {'supportMobileNumber': '   '}
+      });
+      expect(config.hasSupportNumber, isFalse);
+    });
+
+    test('a configured number is reported as present', () {
+      final config = AppConfig.fromJson({
+        'data': {'supportMobileNumber': '01640521788'}
+      });
+      expect(config.hasSupportNumber, isTrue);
+      expect(config.dialableSupportNumber, '01640521788');
+    });
+
+    test('however an admin formats it, it reduces to something dialable', () {
+      const entries = {
+        '+880 1640-521788': '+8801640521788',
+        '01640-521788': '01640521788',
+        '(017) 1234 5678': '01712345678',
+      };
+      entries.forEach((typed, dialable) {
+        final config = AppConfig.fromJson({
+          'data': {'supportMobileNumber': typed}
+        });
+        expect(config.dialableSupportNumber, dialable, reason: typed);
+        // The raw entry survives for display.
+        expect(config.supportMobileNumber, typed);
+      });
+    });
+  });
+
   group('access decisions', () {
     final config = AppConfig.fromJson(_stagingConfigResponse);
 

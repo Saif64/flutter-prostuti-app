@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TermsConditionsScreen extends StatelessWidget {
+import 'config/viewmodel/app_config_viewmodel.dart';
+
+class TermsConditionsScreen extends ConsumerWidget {
   const TermsConditionsScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final config = ref.watch(appConfigNotifierProvider).valueOrNull;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -279,8 +283,11 @@ class TermsConditionsScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   _buildContactRow(
                       Icons.email_outlined, "Email:", "support@prostuti.app"),
-                  _buildContactRow(
-                      Icons.phone_outlined, "Phone:", "01640521788"),
+                  // Shown only when the backend has a support number on file;
+                  // the number is not duplicated in the app.
+                  if (config != null && config.hasSupportNumber)
+                    _buildContactRow(Icons.phone_outlined, "Phone:",
+                        config.supportMobileNumber),
                   const SizedBox(height: 40),
                   Center(
                     child: ElevatedButton(

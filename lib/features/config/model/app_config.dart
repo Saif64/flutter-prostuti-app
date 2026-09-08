@@ -82,6 +82,22 @@ class AppConfig {
       };
 
   bool isFree(FreeFeature feature) => freeAccessFeatures.contains(feature);
+
+  /// Whether the backend has actually supplied a support number.
+  ///
+  /// The field is served as an empty string until an admin fills it in, and
+  /// there is deliberately no hardcoded fallback — a number that only lives in
+  /// the dashboard cannot drift out of date behind an app-store release. Screens
+  /// hide their contact affordances rather than offering a dead one.
+  bool get hasSupportNumber => supportMobileNumber.trim().isNotEmpty;
+
+  /// The support number reduced to what a `tel:` or `sms:` URI can dial.
+  ///
+  /// Admins type numbers however they like — "+880 1640-521788",
+  /// "01640-521788" — so punctuation and spacing are stripped for dialling
+  /// while [supportMobileNumber] stays as entered for display.
+  String get dialableSupportNumber =>
+      supportMobileNumber.replaceAll(RegExp(r'[^0-9+]'), '');
 }
 
 /// The features `freeAccessFeatures` can name, normalised away from the API's

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prostuti/core/services/localization_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SupportScreen extends StatelessWidget {
+import 'config/viewmodel/app_config_viewmodel.dart';
+
+class SupportScreen extends ConsumerWidget {
   const SupportScreen({Key? key}) : super(key: key);
 
   // Helper methods for launching URLs
@@ -27,7 +30,9 @@ class SupportScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final configAsync = ref.watch(appConfigNotifierProvider);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -96,53 +101,75 @@ class SupportScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 32),
 
-                      // Call button
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: () => _launchCall('01640521788'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF4169E8),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          child: Text(
-                            context.l10n!.helplineCall, // "হেল্প লাইনে কল করুন"
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                      // Call and message buttons, driven entirely by the
+                      // support number the backend serves. While the config is
+                      // in flight, and whenever no number is configured, no
+                      // contact button is offered at all — better than a button
+                      // that dials nothing.
+                      configAsync.when(
+                        loading: () => const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 16),
+                          child: CircularProgressIndicator(),
                         ),
-                      ),
-                      const SizedBox(height: 16),
+                        error: (_, __) => const SizedBox.shrink(),
+                        data: (config) {
+                          if (!config.hasSupportNumber) {
+                            return const SizedBox.shrink();
+                          }
+                          final number = config.dialableSupportNumber;
 
-                      // Message button
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: OutlinedButton(
-                          onPressed: () => _launchMessage('01640521788'),
-                          style: OutlinedButton.styleFrom(
-                            side: BorderSide(color: Colors.blue.shade100),
-                            backgroundColor: const Color(0xFFE6EEFA),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          child: Text(
-                            context.l10n!.messageToSupport,
-                            // "ম্যাসেজে সাপোর্ট কথা বলুন"
-                            style: const TextStyle(
-                              color: Color(0xFF4169E8),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                          return Column(
+                            children: [
+                              // Call button
+                              SizedBox(
+                                width: double.infinity,
+                                height: 56,
+                                child: ElevatedButton(
+                                  onPressed: () => _launchCall(number),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFF4169E8),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    context.l10n!.helplineCall,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+
+                              // Message button
+                              SizedBox(
+                                width: double.infinity,
+                                height: 56,
+                                child: OutlinedButton(
+                                  onPressed: () => _launchMessage(number),
+                                  style: OutlinedButton.styleFrom(
+                                    side: BorderSide(color: Colors.blue.shade100),
+                                    backgroundColor: const Color(0xFFE6EEFA),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    context.l10n!.messageToSupport,
+                                    style: const TextStyle(
+                                      color: Color(0xFF4169E8),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                     ],
                   ),
