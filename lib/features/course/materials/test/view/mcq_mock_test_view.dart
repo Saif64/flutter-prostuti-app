@@ -247,7 +247,7 @@ class MockTestScreenState extends ConsumerState<MCQMockTestScreen>
           );
         } else {
           Fluttertoast.showToast(
-            msg: "Something went wrong, Please try again.",
+            msg: "Something went wrong. Please try again!",
           );
         };
       }, loadingController: ref.read(_loadingProvider.notifier),);

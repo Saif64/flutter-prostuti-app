@@ -92,7 +92,7 @@ class AssignmentDetailsViewState extends ConsumerState<AssignmentDetailsView>
                     for (var file in assignment.data!.uploadFileResources!)
                       InkWell(
                           onTap: () async {
-                            Fluttertoast.showToast(msg: "Starting Download");
+                            Fluttertoast.showToast(msg: "Starting download...");
                             String? filePath = await fileHelper.downloadFile(
                                 file.path!, file.originalName!);
 

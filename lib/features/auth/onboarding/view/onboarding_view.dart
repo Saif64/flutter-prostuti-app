@@ -73,7 +73,7 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "প্রস্তুতি অ্যাপে স্বাগতম! অনুশীলন করুন, দক্ষতা গড়ুন, আত্মবিশ্বাস বাড়ান। আপনার সাফল্যের যাত্রা শুরু হোক আজ থেকেই! প্রস্তুতি অ্যাপে স্বাগতম! অনুশীলন করুন, দক্ষতা বাড়ান, সাফল্য অর্জন করুন",
+                    "প্রস্তুতি অ্যাপে স্বাগতম! অনুশীলন করুন, দক্ষতা গড়ুন, আত্মবিশ্বাস বাড়ান। আপনার সাফল্যের যাত্রা শুরু হোক আজ থেকেই!",
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
@@ -105,7 +105,7 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    " ইন্টারঅ্যাকটিভ ফ্ল্যাশকার্ড, কুইজ এবং ডাউট সলভের মাধ্যমে সহজে শেখার অভিজ্ঞতা লাভ করুন। ইন্টারঅ্যাকটিভ পাঠ, কুইজ, এবং অনুশীলনের মাধ্যমে সহজে শেখার অভিজ্ঞতা নিন।",
+                    "ইন্টারঅ্যাকটিভ ফ্ল্যাশকার্ড, কুইজ এবং ডাউট সলভের মাধ্যমে সহজে শেখার অভিজ্ঞতা নিন।",
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme

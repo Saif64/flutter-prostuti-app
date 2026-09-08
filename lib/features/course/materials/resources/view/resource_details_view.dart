@@ -124,7 +124,7 @@ class ResourceDetailsViewState extends ConsumerState<ResourceDetailsView>
                               child: ListTile(
                                 onTap: () async {
                                   Fluttertoast.showToast(
-                                      msg: "Starting Download");
+                                      msg: "Starting download...");
                                   String? filePath =
                                       await fileHelper.downloadFile(
                                           uploadItem.path!,

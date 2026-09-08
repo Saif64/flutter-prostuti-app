@@ -19,7 +19,7 @@ class FavoriteQuestionsView extends ConsumerWidget {
       data: (questions) {
         if (questions.isEmpty) {
           return const Center(
-            child: Text("No favorite Question added"),
+            child: Text("No favorite questions added yet"),
           );
         }
 

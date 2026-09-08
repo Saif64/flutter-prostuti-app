@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:prostuti/common/widgets/common_widgets/common_widgets.dart';
 import 'package:prostuti/common/widgets/long_button.dart';
 import 'package:prostuti/core/configs/app_colors.dart';
+import 'package:prostuti/core/services/localization_service.dart';
 import 'package:prostuti/features/test/model/mock_written_quiz_model.dart';
 import 'package:prostuti/features/test/repository/mock_test_repo.dart';
 import 'package:prostuti/features/test/view/written_mock_quiz_history_screen.dart';
@@ -123,7 +124,7 @@ class _WrittenMockQuizScreenState extends ConsumerState<WrittenMockQuizScreen>
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: commonAppbar("Written Mock Test"),
+      appBar: commonAppbar(context.l10n?.mockTest ?? "Written Mock Test"),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Column(

@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -133,7 +135,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get loadingMore => 'আরও লোড হচ্ছে...';
 
   @override
-  String get noFlashcardItems => 'এই সেটের জন্য কোন ফ্ল্যাশকার্ড আইটেম পাওয়া যায়নি';
+  String get noFlashcardItems =>
+      'এই সেটের জন্য কোন ফ্ল্যাশকার্ড আইটেম পাওয়া যায়নি';
 
   @override
   String get swipeLeftToLearn => 'শিখতে বামে সোয়াইপ করুন';
@@ -190,7 +193,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get passwordRequired => 'পাসওয়ার্ড প্রয়োজন';
 
   @override
-  String get passwordValidationMessage => 'পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর, একটি বিশেষ চিহ্ন এবং ৮ অক্ষর থাকতে হবে';
+  String get passwordValidationMessage =>
+      'পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর, একটি বিশেষ চিহ্ন এবং ৮ অক্ষর থাকতে হবে';
 
   @override
   String get category => 'ক্যাটাগরি';
@@ -244,7 +248,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get clearYourDoubts => 'ক্লিয়ার ইউর ডাউটস';
 
   @override
-  String get onboardingDesc => 'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.';
+  String get onboardingDesc =>
+      'অনুশীলন করুন, দক্ষতা গড়ুন, আত্মবিশ্বাস বাড়ান। আপনার সাফল্যের যাত্রা শুরু হোক আজ থেকেই!';
 
   @override
   String get getStarted => 'শুরু করুন';
@@ -376,16 +381,19 @@ class AppLocalizationsBn extends AppLocalizations {
   String get forOneMonth => '১ মাসের জন্য';
 
   @override
-  String get alreadyActiveSubscription => 'আপনার ইতিমধ্যে একটি সক্রিয় সাবস্ক্রিপশন আছে';
+  String get alreadyActiveSubscription =>
+      'আপনার ইতিমধ্যে একটি সক্রিয় সাবস্ক্রিপশন আছে';
 
   @override
   String get upgradeToPremiumTitle => 'প্রিমিয়ামে আপগ্রেড করুন?';
 
   @override
-  String get premiumIntroDescription => 'প্রস্তুতি প্রিমিয়াম আপনাকে দেয় সকল কোর্স, মক টেস্ট, ফ্ল্যাশকার্ড এবং টিউটরদের সাথে সরাসরি কথা বলার সুযোগ, যাতে প্রস্তুতির জন্য প্রয়োজনীয় সবকিছু আপনি এক জায়গাতেই পেয়ে যান।';
+  String get premiumIntroDescription =>
+      'প্রস্তুতি প্রিমিয়াম আপনাকে দেয় সকল কোর্স, মক টেস্ট, ফ্ল্যাশকার্ড এবং টিউটরদের সাথে সরাসরি কথা বলার সুযোগ, যাতে প্রস্তুতির জন্য প্রয়োজনীয় সবকিছু আপনি এক জায়গাতেই পেয়ে যান।';
 
   @override
-  String get premiumTagline => 'প্রস্তুতির জন্য প্রয়োজনীয় সবকিছু, একটি সাবস্ক্রিপশনেই';
+  String get premiumTagline =>
+      'প্রস্তুতির জন্য প্রয়োজনীয় সবকিছু, একটি সাবস্ক্রিপশনেই';
 
   @override
   String get whyUpgradeTitle => 'আপনি কেনো আপগ্রেড করবেন?';
@@ -394,25 +402,29 @@ class AppLocalizationsBn extends AppLocalizations {
   String get benefitCoursesTitle => 'সকল কোর্সে অ্যাক্সেস';
 
   @override
-  String get benefitCoursesDesc => 'বর্তমান ও আসন্ন সকল কোর্স, তার লেসন ও ম্যাটেরিয়ালসহ ব্যবহার করুন।';
+  String get benefitCoursesDesc =>
+      'বর্তমান ও আসন্ন সকল কোর্স, তার লেসন ও ম্যাটেরিয়ালসহ ব্যবহার করুন।';
 
   @override
   String get benefitMockTestsTitle => 'সীমাহীন মক টেস্ট';
 
   @override
-  String get benefitMockTestsDesc => 'সীমাহীন মক টেস্ট, কুইজ ও সেগমেন্ট টেস্ট দিয়ে অনুশীলন করে নিজের অগ্রগতি যাচাই করুন।';
+  String get benefitMockTestsDesc =>
+      'সীমাহীন মক টেস্ট, কুইজ ও সেগমেন্ট টেস্ট দিয়ে অনুশীলন করে নিজের অগ্রগতি যাচাই করুন।';
 
   @override
   String get benefitFlashcardsTitle => 'দ্রুত রিভিশনের জন্য ফ্ল্যাশকার্ড';
 
   @override
-  String get benefitFlashcardsDesc => 'প্রতিটি বিষয় ও টপিকের ফ্ল্যাশকার্ড দিয়ে দ্রুত রিভিশন করুন।';
+  String get benefitFlashcardsDesc =>
+      'প্রতিটি বিষয় ও টপিকের ফ্ল্যাশকার্ড দিয়ে দ্রুত রিভিশন করুন।';
 
   @override
   String get benefitTutorChatTitle => 'টিউটরদের সাথে সরাসরি চ্যাট';
 
   @override
-  String get benefitTutorChatDesc => 'প্রয়োজনে টিউটরদের সাথে সরাসরি চ্যাট করে আপনার সমস্যার সমাধান নিন।';
+  String get benefitTutorChatDesc =>
+      'প্রয়োজনে টিউটরদের সাথে সরাসরি চ্যাট করে আপনার সমস্যার সমাধান নিন।';
 
   @override
   String get price => 'মূল্য';
@@ -472,7 +484,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get alreadyEnrolled => 'ইতিমধ্যে কোর্সে এনরোল করা আছে';
 
   @override
-  String get contactProstuti => 'এনরোলমেন্টের জন্য প্রস্তুতির সাথে যোগাযোগ করুন';
+  String get contactProstuti =>
+      'এনরোলমেন্টের জন্য প্রস্তুতির সাথে যোগাযোগ করুন';
 
   @override
   String get enrollInCourse => 'এনরোল করুন';
@@ -610,13 +623,16 @@ class AppLocalizationsBn extends AppLocalizations {
   String get visibilityOptions => 'ভিজিবিলিটি অপশন';
 
   @override
-  String get visibilityDescription => 'কে আপনার ফ্ল্যাশকার্ড দেখতে পারবে তা চয়ন করুন';
+  String get visibilityDescription =>
+      'কে আপনার ফ্ল্যাশকার্ড দেখতে পারবে তা চয়ন করুন';
 
   @override
-  String get everyoneDescription => 'আপনার ফ্ল্যাশকার্ড সব ব্যবহারকারীদের কাছে দৃশ্যমান হবে';
+  String get everyoneDescription =>
+      'আপনার ফ্ল্যাশকার্ড সব ব্যবহারকারীদের কাছে দৃশ্যমান হবে';
 
   @override
-  String get onlyMeDescription => 'আপনার ফ্ল্যাশকার্ড শুধুমাত্র আপনার কাছে দৃশ্যমান হবে';
+  String get onlyMeDescription =>
+      'আপনার ফ্ল্যাশকার্ড শুধুমাত্র আপনার কাছে দৃশ্যমান হবে';
 
   @override
   String get confirm => 'নিশ্চিত করুন';
@@ -715,7 +731,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get noMessageRequests => 'কোন মেসেজ অনুরোধ নেই';
 
   @override
-  String get messageRequestDesc => 'আপনার প্রশ্ন আমাদের শিক্ষকদের কাছে পাঠানো হবে। একজন শিক্ষক উত্তর দিলে, আপনি তাদের সাথে কথোপকথন চালিয়ে যেতে পারবেন।';
+  String get messageRequestDesc =>
+      'আপনার প্রশ্ন আমাদের শিক্ষকদের কাছে পাঠানো হবে। একজন শিক্ষক উত্তর দিলে, আপনি তাদের সাথে কথোপকথন চালিয়ে যেতে পারবেন।';
 
   @override
   String get askAQuestion => 'একটি প্রশ্ন করুন';
@@ -730,7 +747,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get sendQuestion => 'প্রশ্ন পাঠান';
 
   @override
-  String get messageSent => 'আপনার প্রশ্ন পাঠানো হয়েছে! শিক্ষকরা শীঘ্রই উত্তর দেবেন।';
+  String get messageSent =>
+      'আপনার প্রশ্ন পাঠানো হয়েছে! শিক্ষকরা শীঘ্রই উত্তর দেবেন।';
 
   @override
   String get howItWorks => 'এটি কীভাবে কাজ করে';
@@ -745,7 +763,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get waitingForTeacher => 'শিক্ষকের জন্য অপেক্ষা করছে';
 
   @override
-  String get noMessagesYetDesc => 'শিক্ষক আপনার প্রশ্নের উত্তর দেওয়ার পরে আপনার কথোপকথন এখানে দেখা যাবে।';
+  String get noMessagesYetDesc =>
+      'শিক্ষক আপনার প্রশ্নের উত্তর দেওয়ার পরে আপনার কথোপকথন এখানে দেখা যাবে।';
 
   @override
   String get todaysRoutine => 'আজকের কার্যক্রম';
@@ -808,10 +827,12 @@ class AppLocalizationsBn extends AppLocalizations {
   String get newQuestion => 'নতুন প্রশ্ন';
 
   @override
-  String get questionSent => 'আপনার প্রশ্ন পাঠানো হয়েছে। একজন শিক্ষক শীঘ্রই উত্তর দেবেন।';
+  String get questionSent =>
+      'আপনার প্রশ্ন পাঠানো হয়েছে। একজন শিক্ষক শীঘ্রই উত্তর দেবেন।';
 
   @override
-  String get broadcastExpired => 'আপনার প্রশ্নের অনুরোধ মেয়াদ শেষ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
+  String get broadcastExpired =>
+      'আপনার প্রশ্নের অনুরোধ মেয়াদ শেষ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
 
   @override
   String get onlineStatus => 'অনলাইন';
@@ -997,7 +1018,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get subcategory => 'উপবিভাগ';
 
   @override
-  String get pleaseSelectYourSubcategory => 'আপনার পছন্দের উপবিভাগ নির্বাচন করুন';
+  String get pleaseSelectYourSubcategory =>
+      'আপনার পছন্দের উপবিভাগ নির্বাচন করুন';
 
   @override
   String get noSubcategoriesFound => 'কোন উপবিভাগ পাওয়া যায়নি';
@@ -1063,7 +1085,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get updatePassword => 'পাসওয়ার্ড আপডেট করুন';
 
   @override
-  String get passwordChangedSuccessfully => 'পাসওয়ার্ড সফলভাবে পরিবর্তন করা হয়েছে';
+  String get passwordChangedSuccessfully =>
+      'পাসওয়ার্ড সফলভাবে পরিবর্তন করা হয়েছে';
 
   @override
   String get confirmPasswordRequired => 'পাসওয়ার্ড নিশ্চিত করা প্রয়োজন';
@@ -1111,7 +1134,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String get contactUsForAnyQuestions => 'যে কোনো প্রয়োজনে এখনি যোগাযোগ করুন';
 
   @override
-  String get supportDescription => 'আমাদের সাপোর্ট টীম আপনার যেকোনো প্রশ্ন বা সমস্যায় সাহায্য করার জন্য উপস্থিত আছে।';
+  String get supportDescription =>
+      'আমাদের সাপোর্ট টীম আপনার যেকোনো প্রশ্ন বা সমস্যায় সাহায্য করার জন্য উপস্থিত আছে।';
 
   @override
   String get helplineCall => 'হেল্প লাইনে কল করুন';
